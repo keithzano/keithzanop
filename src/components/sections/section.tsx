@@ -12,11 +12,7 @@ export const Section = forwardRef<
     className?: string;
   }
 >(({ id, children, className }, ref) => (
-  <section
-    id={id}
-    ref={ref}
-    className={cn("relative min-h-screen scroll-mt-16 py-20", className)}
-  >
+  <section id={id} ref={ref} className={cn("relative scroll-mt-16", className)}>
     <SectionObserver id={id} />
     {children}
   </section>
