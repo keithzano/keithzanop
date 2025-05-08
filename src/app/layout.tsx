@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nunito.variable} antialiased`}>
+      <body className={`${nunito.variable} grainy-bg antialiased`}>
         <Navbar />
         {children}
       </body>
