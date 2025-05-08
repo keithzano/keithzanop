@@ -15,7 +15,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 md:px-8 xl:px-38">
-      <div className="bg-background/95 supports-[backdrop-filter]:bg-background/60 container mx-auto flex h-16 items-center justify-between rounded-lg border-b px-6 backdrop-blur">
+      <div className="bg-background/95 supports-[backdrop-filter]:bg-background/60 container mx-auto flex h-16 items-center justify-between rounded-lg border-b px-4 backdrop-blur">
         {/* Left side */}
         <Link href="/" className="font-bold">
           <Image src="/images/logo.png" alt="logo" width={50} height={51} />
