@@ -4,20 +4,37 @@ import { cn } from "@/lib/utils";
 import { useSectionContext } from "@/context/section-context";
 import { useEffect, useState } from "react";
 
+const SIDE_MENU_SECTIONS = [
+  "about",
+  "work",
+  "studies",
+  "technologies",
+] as const;
+
+type SideMenuSection = (typeof SIDE_MENU_SECTIONS)[number];
+
 const SECTIONS = [
   { id: "about", label: "About" },
   { id: "work", label: "Work" },
   { id: "studies", label: "Studies" },
   { id: "technologies", label: "Technologies" },
-];
+] satisfies { id: SideMenuSection; label: string }[];
 
 export function SectionNav() {
   const { activeSection, sectionsInView } = useSectionContext();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsVisible(sectionsInView.size > 0);
-  }, [sectionsInView]);
+    // Only show if:
+    // 1. There are sections in view AND
+    // 2. The active section is in our side menu list
+    const shouldShow =
+      sectionsInView.size > 0 &&
+      activeSection !== null &&
+      SECTIONS.some((item) => item.id === activeSection);
+
+    setIsVisible(shouldShow);
+  }, [activeSection, sectionsInView]);
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({
