@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -23,8 +24,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${nunito.variable} grainy-bg antialiased`}>
-        <Navbar />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+          storageKey="theme"
+        >
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
