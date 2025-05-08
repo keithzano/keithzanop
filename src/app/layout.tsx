@@ -3,6 +3,7 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { SectionProvider } from "@/context/section-context";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -31,8 +32,10 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="theme"
         >
-          <Navbar />
-          {children}
+          <SectionProvider>
+            <Navbar />
+            {children}
+          </SectionProvider>
         </ThemeProvider>
       </body>
     </html>
