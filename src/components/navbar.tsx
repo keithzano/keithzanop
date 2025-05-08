@@ -1,17 +1,23 @@
+"use client";
 import Link from "next/link";
 import { Menu, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import Image from "next/image";
+import { useSectionContext } from "@/context/section-context";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Projects", href: "/projects" },
-    { name: "Contact here", href: "/contact" },
+    { name: "About", href: "#about", sectionId: "about" },
+    { name: "work", href: "#work", sectionId: "work" },
+    { name: "Studies", href: "#studies", sectionId: "studies" },
+    { name: "Technologies", href: "#technologies", sectionId: "technologies" },
+    { name: "Contact", href: "#contact", sectionId: "contact" },
   ];
+
+  const { activeSection } = useSectionContext();
 
   return (
     <header className="sticky top-0 z-50 md:px-8 xl:px-38">
@@ -25,13 +31,25 @@ export function Navbar() {
         <div className="flex items-center gap-6">
           <nav className="hidden items-center md:flex">
             {navLinks.map((link) => (
-              <Link
+              <a // Changed from Link to 'a' for smooth scrolling
                 key={link.name}
                 href={link.href}
-                className="hover:bg-secondary hover:text-secondary-foreground flex items-center justify-center rounded-full px-4 py-1 text-sm font-bold transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById(link.sectionId)?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }}
+                className={cn(
+                  "hover:bg-secondary hover:text-secondary-foreground flex items-center justify-center rounded-full px-4 py-1 text-sm font-bold transition-colors",
+                  activeSection === link.sectionId
+                    ? "bg-primary/10 text-primary"
+                    : "",
+                )}
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
           </nav>
           <ThemeToggle />
@@ -63,13 +81,25 @@ export function Navbar() {
             <SheetContent side="left">
               <div className="flex flex-col gap-2 pt-8">
                 {navLinks.map((link) => (
-                  <Link
+                  <a // Changed from Link to 'a'
                     key={link.name}
                     href={link.href}
-                    className="hover:bg-accent hover:text-primary-foreground rounded-full px-4 py-3 transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById(link.sectionId)?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                    }}
+                    className={cn(
+                      "hover:bg-accent hover:text-primary-foreground rounded-full px-4 py-3 transition-colors",
+                      activeSection === link.sectionId
+                        ? "bg-primary/10 text-primary"
+                        : "",
+                    )}
                   >
                     {link.name}
-                  </Link>
+                  </a>
                 ))}
               </div>
             </SheetContent>
