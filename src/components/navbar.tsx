@@ -38,14 +38,14 @@ export function Navbar() {
 
           <div>
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://github.com/yourusername" target="_blank">
+              <Link href="https://github.com/keithzano" target="_blank">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
             </Button>
 
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://linkedin.com/in/yourusername" target="_blank">
+              <Link href="https://linkedin.com/in/keithzano" target="_blank">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
