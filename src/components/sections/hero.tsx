@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Button } from "../ui/button";
-import { Bruno_Ace } from "next/font/google";
 
 export const Hero: FC = () => {
   return (
