@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Button } from "../ui/button";
+import { Bruno_Ace } from "next/font/google";
 
 export const Hero: FC = () => {
   return (
@@ -11,17 +12,18 @@ export const Hero: FC = () => {
             I Build web stuff in exchange for money.
           </span>
         </h1>
-        <p className="text-foreground tex-lg max-w-lg leading-relaxed font-medium md:text-xl">
+        <p className="text-foreground max-w-lg leading-relaxed font-medium md:text-xl">
           I am a software developer who has been turning caffein in code since
           2020. Will build your website if you promise not to ask for ‘something
           like Airbnb but simpler’. “I search Stack Overflow like it’s my job
           (wait, it is). Then I stitch together answers until the code works. ✨
           Art ✨”
         </p>
-        <div>
+        <div className="space-x-6">
           <Button size={"lg"} variant={"outline"}>
             Download my cv
           </Button>
+          <Button>Schedule meeting</Button>
         </div>
       </div>
     </section>
