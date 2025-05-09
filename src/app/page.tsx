@@ -4,6 +4,7 @@ import { SectionNav } from "@/components/sections/section-nav";
 import Image from "next/image";
 import keith from "@/assets/images/keithzano.jpg";
 import { About } from "@/components/sections/about";
+import { Work } from "@/components/sections/work";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
           </header>
           <div className="flex-3 space-y-6 lg:space-y-12">
             <About />
+            <Work />
           </div>
         </div>
       </section>
