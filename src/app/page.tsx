@@ -6,6 +6,7 @@ import keith from "@/assets/images/keithzano.jpg";
 import { About } from "@/components/sections/about";
 import { Work } from "@/components/sections/work";
 import { Projects } from "@/components/sections/projects";
+import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Contact />
     </>
   );
 }
