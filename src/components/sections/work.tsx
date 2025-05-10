@@ -70,7 +70,7 @@ export const Work = () => {
           key={work.company}
           className="group bg-background hover:bg-muted/50 space-y-4 rounded-lg p-6 shadow-sm transition duration-300 ease-in-out hover:shadow-md"
         >
-          <div className="flex flex-col justify-between md:flex-row">
+          <div className="flex flex-col justify-between space-y-6 md:flex-row">
             <div>
               <h3 className="group-hover:text-primary text-lg font-semibold transition">
                 {work.position}
@@ -79,7 +79,7 @@ export const Work = () => {
                 {work.company}
               </h4>
             </div>
-            <div className="text-right">
+            <div className="md:text-right">
               <h3 className="text-base font-medium">{work.location}</h3>
               <h4 className="text-muted-foreground text-sm italic">
                 {work.dates}
