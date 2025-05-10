@@ -11,9 +11,8 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const navLinks = [
     { name: "About", href: "#about", sectionId: "about" },
-    { name: "work", href: "#work", sectionId: "work" },
-    { name: "Studies", href: "#studies", sectionId: "studies" },
-    { name: "Technologies", href: "#technologies", sectionId: "technologies" },
+    { name: "Work", href: "#work", sectionId: "work" },
+    { name: "Projects", href: "#projects", sectionId: "projects" },
     { name: "Contact", href: "#contact", sectionId: "contact" },
   ];
 
