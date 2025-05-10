@@ -4,6 +4,7 @@ import almo from "@/assets/images/almo.png";
 import mnp from "@/assets/images/mnp.png";
 import westlake from "@/assets/images/west-lake.png";
 import { ExternalLink } from "lucide-react";
+import { ProjectCard } from "./project-card";
 
 type Work = {
   company: string;
@@ -154,38 +155,7 @@ export const Work = () => {
       </h3>
 
       {projects.map((project) => (
-        <article
-          key={project.name}
-          className="group bg-background hover:bg-muted/50 flex gap-6 rounded-lg p-6 shadow-sm transition duration-300 ease-in-out hover:shadow-md"
-        >
-          <div className="flex-1">
-            <Image
-              src={project.image}
-              alt={project.name}
-              className="rounded-lg"
-            />
-          </div>
-
-          <div className="flex-3 space-y-4">
-            <h3 className="text-lg font-bold">
-              <a href={project.link} className="flex justify-between">
-                {project.name}
-                <ExternalLink />
-              </a>
-            </h3>
-            <p className="text-sm">{project.description}</p>
-            <ul className="gape-2 flex flex-wrap gap-2">
-              {project.technologies.map((technologie) => (
-                <li
-                  key={technologie}
-                  className="bg-secondary rounded-full px-4"
-                >
-                  {technologie}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </article>
+        <ProjectCard key={project.name} project={project} />
       ))}
     </Section>
   );
