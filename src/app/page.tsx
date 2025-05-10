@@ -1,3 +1,4 @@
+"use client";
 import { Hero } from "@/components/sections/hero";
 import { Section } from "@/components/sections/section";
 import { SectionNav } from "@/components/sections/section-nav";
@@ -7,10 +8,12 @@ import { About } from "@/components/sections/about";
 import { Work } from "@/components/sections/work";
 import { Projects } from "@/components/sections/projects";
 import { Contact } from "@/components/sections/contact";
+import ReactLenis, { useLenis } from "lenis/react";
 
 export default function Home() {
+  const lenis = useLenis(({ scroll }) => {});
   return (
-    <>
+    <ReactLenis root>
       <Hero />
       <SectionNav />
       <section className="py-8 md:px-8 lg:py-12 xl:px-38">
@@ -30,6 +33,6 @@ export default function Home() {
         </div>
       </section>
       <Contact />
-    </>
+    </ReactLenis>
   );
 }
