@@ -4,20 +4,14 @@ import { cn } from "@/lib/utils";
 import { useSectionContext } from "@/context/section-context";
 import { useEffect, useState } from "react";
 
-const SIDE_MENU_SECTIONS = [
-  "about",
-  "work",
-  "studies",
-  "technologies",
-] as const;
+const SIDE_MENU_SECTIONS = ["about", "work", "projects"] as const;
 
 type SideMenuSection = (typeof SIDE_MENU_SECTIONS)[number];
 
 const SECTIONS = [
   { id: "about", label: "About" },
   { id: "work", label: "Work" },
-  { id: "studies", label: "Studies" },
-  { id: "technologies", label: "Technologies" },
+  { id: "projects", label: "Projects" },
 ] satisfies { id: SideMenuSection; label: string }[];
 
 export function SectionNav() {

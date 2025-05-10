@@ -5,6 +5,7 @@ import Image from "next/image";
 import keith from "@/assets/images/keithzano.jpg";
 import { About } from "@/components/sections/about";
 import { Work } from "@/components/sections/work";
+import { Projects } from "@/components/sections/projects";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
           <div className="flex-3 space-y-6 lg:space-y-12">
             <About />
             <Work />
+            <Projects />
           </div>
         </div>
       </section>
