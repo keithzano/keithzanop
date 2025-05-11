@@ -1,4 +1,3 @@
-import { Section } from "./section";
 import { motion, useInView } from "motion/react";
 
 import { useEffect, useRef, useState } from "react";
