@@ -106,7 +106,7 @@ export const Contact = () => {
                 <h4 className="text-muted-foreground text-sm">
                   You can email me here
                 </h4>
-                <p className="text-sm">still.lookingfor@way.toblock.robots</p>
+                <p className="text-sm">κеіthzano@gmail.com</p>
               </div>
 
               <SendHorizonal />
@@ -116,7 +116,7 @@ export const Contact = () => {
                 <h4 className="text-muted-foreground text-sm">
                   Give me a call on
                 </h4>
-                <p className="text-sm">012 345 6789</p>
+                <p className="text-sm">+27 64 364 3526</p>
               </div>
 
               <SendHorizonal />
@@ -132,8 +132,20 @@ export const Contact = () => {
             <div>
               <h4 className="mt-12 mb-4 text-xl">My socials</h4>
               <div className="bg-background flex w-max gap-6 rounded-lg p-6">
-                <Linkedin />
-                <Github />
+                <a
+                  href="https://github.com/keithzano"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github />
+                </a>
+                <a
+                  href="https://linkedin.com/in/keithzano"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin />
+                </a>
                 <Mail />
               </div>
             </div>
