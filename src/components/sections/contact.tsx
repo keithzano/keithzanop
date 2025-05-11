@@ -22,18 +22,18 @@ export const Contact = () => {
   const isInView = useInView(ref);
   useEffect(() => {
     if (isInView) {
-      setActiveSection("work");
-      setSectionsInView((prev) => new Set(prev).add("work"));
+      setActiveSection("contact");
+      setSectionsInView((prev) => new Set(prev).add("contact"));
     } else {
       setSectionsInView((prev) => {
         const newSet = new Set(prev);
-        newSet.delete("work");
+        newSet.delete("contact");
         return newSet;
       });
     }
   }, [isInView, setActiveSection, setSectionsInView]);
   return (
-    <section id="contact" className="py-6 md:px-8 lg:py-12 xl:px-38">
+    <section id="contact" ref={ref} className="py-6 md:px-8 lg:py-12 xl:px-38">
       <div className="container mx-auto space-y-6 px-4 lg:space-y-12">
         <div className="bg-background flex flex-col items-center gap-6 rounded-lg p-6 shadow-sm lg:p-12">
           <MessageSquareText />
