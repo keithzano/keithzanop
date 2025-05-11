@@ -1,5 +1,31 @@
-import Image, { StaticImageData } from "next/image";
 import { Section } from "./section";
+import { motion } from "motion/react";
+
+import { useEffect, useState } from "react";
+import { WorkCard } from "./work-card";
+
+export function useScrollDirection() {
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const updateScrollDirection = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY) {
+        setScrollDirection("down");
+      } else {
+        setScrollDirection("up");
+      }
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", updateScrollDirection);
+    return () => window.removeEventListener("scroll", updateScrollDirection);
+  }, []);
+
+  return scrollDirection;
+}
 
 type Work = {
   company: string;
@@ -57,6 +83,7 @@ const works: Work[] = [
 ];
 
 export const Work = () => {
+  const scrollDirection = useScrollDirection();
   return (
     <Section id="work" className="space-y-6 lg:space-y-12">
       <h2 className="text-3xl font-bold">Work & Experience</h2>
@@ -65,35 +92,16 @@ export const Work = () => {
         Here are some companies I’ve somehow impressed enough to trust me with
         their tech.
       </h3>
-      {works.map((work) => (
-        <article
-          key={work.company}
-          className="group bg-background hover:bg-muted/50 space-y-4 rounded-lg p-6 shadow-sm transition duration-300 ease-in-out hover:shadow-md"
+      {works.map((work, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: scrollDirection === "up" ? 60 : -60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
+          viewport={{ once: false, amount: 0.4 }}
         >
-          <div className="flex flex-col justify-between space-y-6 md:flex-row">
-            <div>
-              <h3 className="group-hover:text-primary text-lg font-semibold transition">
-                {work.position}
-              </h3>
-              <h4 className="text-muted-foreground text-sm italic">
-                {work.company}
-              </h4>
-            </div>
-            <div className="md:text-right">
-              <h3 className="text-base font-medium">{work.location}</h3>
-              <h4 className="text-muted-foreground text-sm italic">
-                {work.dates}
-              </h4>
-            </div>
-          </div>
-          <ul className="marker:text-primary list-disc space-y-1 pl-5 marker:text-2xl">
-            {work.duties.map((dutie, index) => (
-              <li key={index} className="ps-2">
-                {dutie}
-              </li>
-            ))}
-          </ul>
-        </article>
+          <WorkCard work={work} />
+        </motion.div>
       ))}
     </Section>
   );
