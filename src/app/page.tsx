@@ -1,6 +1,5 @@
 "use client";
 import { Hero } from "@/components/sections/hero";
-import { Section } from "@/components/sections/section";
 import { SectionNav } from "@/components/sections/section-nav";
 import Image from "next/image";
 import keith from "@/assets/images/keithzano.jpg";
