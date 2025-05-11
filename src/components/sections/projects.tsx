@@ -1,4 +1,3 @@
-import { Section } from "./section";
 import almo from "@/assets/images/almo.png";
 import mnp from "@/assets/images/mnp.png";
 import westlake from "@/assets/images/west-lake.png";
@@ -98,7 +97,7 @@ export const Projects = () => {
   const scrollDirection = useScrollDirection();
 
   return (
-    <Section id="projects" className="space-y-6 lg:space-y-12">
+    <section ref={ref} id="projects" className="space-y-6 lg:space-y-12">
       <h2 className="text-2xl font-bold">Projects</h2>
       <h3 className="text-2xl italic">
         {" "}
@@ -116,6 +115,6 @@ export const Projects = () => {
           <ProjectCard project={project} />
         </motion.div>
       ))}
-    </Section>
+    </section>
   );
 };
