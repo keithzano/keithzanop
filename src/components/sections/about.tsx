@@ -28,18 +28,32 @@ export const About = () => {
           <h3 className="text-2xl">Software developer</h3>
         </div>
         <div className="flex gap-6">
-          <Button>
-            <Github />
-            GitHub
-          </Button>
-          <Button>
-            <Linkedin />
-            LinkedIn
-          </Button>
-          <Button>
-            <Mail />
-            Email
-          </Button>
+          <a
+            href="https://github.com/keithzano"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button>
+              <Github className="mr-2" />
+              GitHub
+            </Button>
+          </a>
+          <a
+            href="https://linkedin.com/in/keithzano"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button>
+              <Linkedin className="mr-2" />
+              LinkedIn
+            </Button>
+          </a>
+          <a href="mailto:keith@example.com">
+            <Button>
+              <Mail className="mr-2" />
+              Email
+            </Button>
+          </a>
         </div>
       </header>
       <main className="space-y-6">
