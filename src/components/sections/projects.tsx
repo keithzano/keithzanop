@@ -4,9 +4,10 @@ import mnp from "@/assets/images/mnp.png";
 import westlake from "@/assets/images/west-lake.png";
 import { ProjectCard } from "./project-card";
 import { StaticImageData } from "next/image";
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSectionContext } from "@/context/section-context";
 
 export function useScrollDirection() {
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
@@ -79,6 +80,21 @@ const projects: Project[] = [
 ];
 
 export const Projects = () => {
+  const { setActiveSection, setSectionsInView } = useSectionContext();
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  useEffect(() => {
+    if (isInView) {
+      setActiveSection("work");
+      setSectionsInView((prev) => new Set(prev).add("work"));
+    } else {
+      setSectionsInView((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete("work");
+        return newSet;
+      });
+    }
+  }, [isInView, setActiveSection, setSectionsInView]);
   const scrollDirection = useScrollDirection();
 
   return (

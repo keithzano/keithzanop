@@ -1,10 +1,27 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "../ui/button";
-import { Section } from "./section";
+import { useSectionContext } from "@/context/section-context";
+import { useEffect, useRef } from "react";
+import { useInView } from "motion/react";
 
 export const About = () => {
+  const { setActiveSection, setSectionsInView } = useSectionContext();
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  useEffect(() => {
+    if (isInView) {
+      setActiveSection("about");
+      setSectionsInView((prev) => new Set(prev).add("work"));
+    } else {
+      setSectionsInView((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete("about");
+        return newSet;
+      });
+    }
+  }, [isInView, setActiveSection, setSectionsInView]);
   return (
-    <Section id="about" className="space-y-6 lg:space-y-12">
+    <section ref={ref} id="about" className="space-y-6 lg:space-y-12">
       <header className="space-y-6">
         <div>
           <h2 className="text-foreground text-4xl">Keith Zanorehamba</h2>
@@ -85,6 +102,6 @@ export const About = () => {
           </li>
         </ul>
       </main>
-    </Section>
+    </section>
   );
 };

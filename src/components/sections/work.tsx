@@ -1,8 +1,9 @@
 import { Section } from "./section";
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { WorkCard } from "./work-card";
+import { useSectionContext } from "@/context/section-context";
 
 export function useScrollDirection() {
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
@@ -83,9 +84,25 @@ const works: Work[] = [
 ];
 
 export const Work = () => {
+  const { setActiveSection, setSectionsInView } = useSectionContext();
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  useEffect(() => {
+    if (isInView) {
+      setActiveSection("work");
+      setSectionsInView((prev) => new Set(prev).add("work"));
+    } else {
+      setSectionsInView((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete("work");
+        return newSet;
+      });
+    }
+  }, [isInView, setActiveSection, setSectionsInView]);
+
   const scrollDirection = useScrollDirection();
   return (
-    <Section id="work" className="space-y-6 lg:space-y-12">
+    <section ref={ref} id="work" className="space-y-6 lg:space-y-12">
       <h2 className="text-3xl font-bold">Work & Experience</h2>
       <h3 className="text-2xl italic">
         {" "}
@@ -103,6 +120,6 @@ export const Work = () => {
           <WorkCard work={work} />
         </motion.div>
       ))}
-    </Section>
+    </section>
   );
 };
