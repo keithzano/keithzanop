@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { SectionProvider } from "@/context/section-context";
+import { Footer } from "@/components/footer";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
           <SectionProvider>
             <Navbar />
             {children}
+            <Footer />
           </SectionProvider>
         </ThemeProvider>
       </body>
