@@ -85,12 +85,12 @@ export const Projects = () => {
   const isInView = useInView(ref);
   useEffect(() => {
     if (isInView) {
-      setActiveSection("work");
-      setSectionsInView((prev) => new Set(prev).add("work"));
+      setActiveSection("projects");
+      setSectionsInView((prev) => new Set(prev).add("projects"));
     } else {
       setSectionsInView((prev) => {
         const newSet = new Set(prev);
-        newSet.delete("work");
+        newSet.delete("projects");
         return newSet;
       });
     }

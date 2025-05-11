@@ -11,7 +11,7 @@ export const About = () => {
   useEffect(() => {
     if (isInView) {
       setActiveSection("about");
-      setSectionsInView((prev) => new Set(prev).add("work"));
+      setSectionsInView((prev) => new Set(prev).add("about"));
     } else {
       setSectionsInView((prev) => {
         const newSet = new Set(prev);
