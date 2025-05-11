@@ -4,6 +4,32 @@ import mnp from "@/assets/images/mnp.png";
 import westlake from "@/assets/images/west-lake.png";
 import { ProjectCard } from "./project-card";
 import { StaticImageData } from "next/image";
+import { motion } from "motion/react";
+
+import { useEffect, useState } from "react";
+
+export function useScrollDirection() {
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const updateScrollDirection = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY) {
+        setScrollDirection("down");
+      } else {
+        setScrollDirection("up");
+      }
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", updateScrollDirection);
+    return () => window.removeEventListener("scroll", updateScrollDirection);
+  }, []);
+
+  return scrollDirection;
+}
 
 type Project = {
   name: string;
@@ -53,6 +79,8 @@ const projects: Project[] = [
 ];
 
 export const Projects = () => {
+  const scrollDirection = useScrollDirection();
+
   return (
     <Section id="projects" className="space-y-6 lg:space-y-12">
       <h2 className="text-2xl font-bold">Projects</h2>
@@ -61,8 +89,16 @@ export const Projects = () => {
         Here are some of the Internet stuff i have build
       </h3>
 
-      {projects.map((project) => (
-        <ProjectCard key={project.name} project={project} />
+      {projects.map((project, index) => (
+        <motion.div
+          key={project.name}
+          initial={{ opacity: 0, y: scrollDirection === "up" ? 60 : -60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
+          viewport={{ once: false, amount: 0.4 }}
+        >
+          <ProjectCard project={project} />
+        </motion.div>
       ))}
     </Section>
   );
