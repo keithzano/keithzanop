@@ -8,6 +8,9 @@ export const Hero: FC = () => {
   const paragraph =
     "I'm a software developer who’s been turning caffeine into code since 2020. I'll build your website as long as you don’t ask for “something like Airbnb but simpler.” I treat Stack Overflow like a second brain, then duct-tape answers together until something shippable emerges. ✨ It's not a bug, it's a feature ✨";
   const words = paragraph.split(" ");
+  const handleClick = () => {
+    window.open("/documents/keith zanorehamba cv.pdf", "_blank");
+  };
   return (
     <section className="py-6 md:px-8 lg:py-12 xl:px-38">
       <div className="container mx-auto flex h-screen flex-col justify-center space-y-6 px-4 lg:space-y-12">
@@ -40,10 +43,10 @@ export const Hero: FC = () => {
           ))}
         </p>
         <div className="space-x-6">
-          <Button size={"lg"} variant={"outline"}>
-            Download my cv
+          <Button onClick={handleClick} className="p-6" variant={"outline"}>
+            Open my CV
           </Button>
-          <Button>Schedule meeting</Button>
+          <Button className="p-6">Schedule meeting</Button>
         </div>
       </div>
     </section>
