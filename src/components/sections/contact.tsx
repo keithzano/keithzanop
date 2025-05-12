@@ -71,7 +71,7 @@ export const Contact = () => {
 
         <div className="flex flex-col gap-6 lg:flex-row-reverse lg:gap-6">
           <div className="bg-background flex-3 space-y-6 rounded-lg p-6 shadow-sm lg:gap-12 lg:space-y-12 lg:p-12">
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid gap-6 md:grid-cols-2">
               <Input
                 placeholder="First Name"
                 className="bg-secondary rounded-sm p-6"
