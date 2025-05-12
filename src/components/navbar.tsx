@@ -2,7 +2,12 @@
 import Link from "next/link";
 import { Menu, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import Image from "next/image";
 import { useSectionContext } from "@/context/section-context";
@@ -78,6 +83,7 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
+              <SheetTitle className="sr-only"> menu </SheetTitle>
               <div className="flex flex-col gap-2 pt-8">
                 {navLinks.map((link) => (
                   <a // Changed from Link to 'a'
