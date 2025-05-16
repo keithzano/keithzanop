@@ -102,12 +102,14 @@ export const Work = () => {
   const scrollDirection = useScrollDirection();
   return (
     <section ref={ref} id="work" className="space-y-6 lg:space-y-12">
-      <h2 className="text-3xl font-bold">Work & Experience</h2>
-      <h3 className="text-2xl italic">
-        {" "}
-        Here are some companies I’ve somehow impressed enough to trust me with
-        their tech.
-      </h3>
+      <div className="space-y-6">
+        <h2 className="text-3xl font-bold">Work & Experience</h2>
+        <h3 className="text-2xl italic">
+          {" "}
+          Here are some companies I’ve somehow impressed enough to trust me with
+          their tech.
+        </h3>
+      </div>
       {works.map((work, index) => (
         <motion.div
           key={index}
