@@ -66,8 +66,8 @@ const projects: Project[] = [
     name: "West Lake Fish House",
     description:
       "A clean and elegant WordPress website built for West Lake Fish House, designed to reflect their upscale dining experience. The site features a digital menu, stunning food photography, reservation contact details, and a layout optimized for both desktop and mobile users. Emphasis was placed on creating a modern, easy-to-navigate interface that mirrors the restaurant’s ambiance.",
-    link: "https://example.com", // replace with the actual site URL
-    image: westlake, // replace with the image import variable
+    link: "https://westlakefishhouse.com/",
+    image: westlake,
     technologies: [
       "WordPress",
       "Elementor",
